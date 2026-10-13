@@ -1,0 +1,24 @@
+DELIMITER $$
+
+CREATE FUNCTION GetGrade(mark INT)
+RETURNS VARCHAR(20)
+DETERMINISTIC
+BEGIN
+    DECLARE result VARCHAR(20);
+
+    IF mark >= 50 AND mark < 60 THEN
+        SET result = 'Average';
+    ELSEIF mark >= 60 AND mark < 70 THEN
+        SET result = 'Good';
+    ELSEIF mark >= 70 AND mark <= 80 THEN
+        SET result = 'Excellent';
+    ELSEIF mark > 80 THEN
+        SET result = 'Outstanding';
+    ELSE
+        SET result = 'Fail';
+    END IF;
+
+    RETURN result;
+END $$
+
+DELIMITER $$
